@@ -7,10 +7,11 @@ function sy(a,f,t,off) {
   return a*Math.sin( f*2*Math.PI*t )+off;
 }
 
-function liss(ifx,ify,iphase) {
+function draw_liss(ifx,ify,iphase,t) {
   let n = 600;
   let fx = ifx;
   let fy = ify;
+
   for(let k=0;k<n;k++) {
     let t0 = k/n;
     let t1 = (k+1)/n;
@@ -30,20 +31,25 @@ function liss(ifx,ify,iphase) {
     stroke(t0*c0r+(1-t0)*c1r,t0*c0g+(1-t0)*c1g,t0*c0b+(1-t0)*c1b);
     line(p0x,p0y,p1x,p1y);
   }
-    
 }
 
 function setup() {
   
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight);  
   
-  
-  liss(5,4,3*Math.PI/32);
+  dt = 0;
   
 }
 
 
 function draw() {
+  
+  dt++;
+  t = dt/300;
+  
+  //square(0,0,400,400);
+  
+  draw_liss(3,4,t*1.58*Math.PI,t);
   
   
   
